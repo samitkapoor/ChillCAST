@@ -101,3 +101,35 @@
   font-weight: 500;
   font-size: 20px;
 }
+
+@media (max-width: 800px) {
+  .title {
+    margin-top: 10vh;
+  }
+
+  .search-input {
+    width: 550px;
+  }
+}
+
+@media (max-width: 650px) {
+  .search-input {
+    width: 450px;
+  }
+}
+
+@media (max-width: 525px) {
+  .heading {
+    font-size: 72px;
+  }
+
+  .search-input {
+    width: 350px;
+  }
+}
+
+@media (max-width: 425px) {
+  .search-input {
+    width: 250px;
+  }
+}

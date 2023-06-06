@@ -98,3 +98,17 @@
   font-size: 12px;
   line-height: 1px;
 }
+
+@media (max-width: 800px) {
+  .collection {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media (max-width: 525px) {
+  .collection {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+  }
+}
