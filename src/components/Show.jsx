@@ -1,8 +1,14 @@
 import React from "react";
 
+import Genres from "./Genres";
+
 const Show = (props) => {
   return (
-    <div className="show" key={crypto.randomUUID()}>
+    <div
+      onClick={() => props.onClick()}
+      className="show"
+      key={crypto.randomUUID()}
+    >
       <img className="poster" src={props.imageUrl} alt="" />
       <div className="poster-overlay">
         <div className="date">{props.date}</div>
@@ -12,15 +18,7 @@ const Show = (props) => {
             <span className="show-score">{props.rating}/10</span>
           )}
         </div>
-        <div className="genres">
-          {props.genres.map((genre) => {
-            return (
-              <p key={crypto.randomUUID()} className="genre">
-                {genre}
-              </p>
-            );
-          })}
-        </div>
+        <Genres genres={props.genres}></Genres>
       </div>
     </div>
   );

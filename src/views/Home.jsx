@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-import Heading from "./components/Heading";
-import SearchBar from "./components/SearchBar";
-import Show from "./components/Show";
+import Heading from "../components/Heading";
+import SearchBar from "../components/SearchBar";
+import Collection from "../components/Collection";
 
-import fetchShows from "./utils/shows.js";
+import fetchShows from "../utils/shows.js";
 
-const App = () => {
+const Home = () => {
   const [shows, setShows] = useState([]);
   const [query, setQuery] = useState("");
   const [filterShows, setFilterShows] = useState([]);
@@ -50,28 +50,10 @@ const App = () => {
               : "or let us help you pick one!"}
           </h1>
         )}
-        <div className="collection">
-          {filterShows.length != 0 &&
-            filterShows.map((show) => {
-              const imageUrl = show["show"]["image"]["medium"];
-              const name = show["show"]["name"];
-              const rating = show["show"]["rating"]["average"];
-              const genres = show["show"]["genres"];
-              const date = show["show"]["premiered"].split("-")[0];
-              return (
-                <Show
-                  imageUrl={imageUrl}
-                  name={name}
-                  rating={rating}
-                  genres={genres}
-                  date={date}
-                ></Show>
-              );
-            })}
-        </div>
+        <Collection filterShows={filterShows}></Collection>
       </div>
     </div>
   );
 };
 
-export default App;
+export default Home;
