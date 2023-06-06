@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchBar = ({ value, onChange }) => {
+const SearchBar = ({ value, onChange, filterQuery }) => {
   return (
     <input
       type="text"
@@ -9,6 +9,7 @@ const SearchBar = ({ value, onChange }) => {
       value={value}
       onChange={(q) => {
         onChange(q.target.value);
+        filterQuery(q.target.value);
       }}
     />
   );

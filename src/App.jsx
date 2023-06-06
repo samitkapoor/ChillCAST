@@ -9,31 +9,52 @@ import fetchShows from "./utils/shows.js";
 const App = () => {
   const [shows, setShows] = useState([]);
   const [query, setQuery] = useState("");
+  const [filterShows, setFilterShows] = useState([]);
+
+  const filterQuery = (q) => {
+    if (q == "") {
+      setFilterShows(shows);
+    } else {
+      const temp = shows.filter((show) => {
+        return show["show"]["name"].toLowerCase().includes(q.toLowerCase());
+      });
+
+      setFilterShows(temp);
+    }
+  };
 
   // api used to fetch the shows details
   useEffect(() => {
-    fetchShows(setShows);
+    fetchShows(setShows, setFilterShows);
   }, []);
 
   return (
     <div className="bg">
       <div className="filter">
         <Heading></Heading>
-        <SearchBar value={query} onChange={setQuery}></SearchBar>
-        <h1 className="subtitle">or let us help you pick one!</h1>
+        <SearchBar
+          value={query}
+          onChange={setQuery}
+          filterQuery={filterQuery}
+        ></SearchBar>
+        <h1 className={filterShows.length == 0 ? "big-text" : "subtitle"}>
+          {filterShows.length == 0
+            ? "Oops! We couldn't find the show"
+            : "or let us help you pick one!"}
+        </h1>
         <div className="collection">
-          {shows.length != 0 &&
-            shows.map((show) => {
+          {filterShows.length != 0 &&
+            filterShows.map((show) => {
               const imageUrl = show["show"]["image"]["medium"];
               const name = show["show"]["name"];
-              const score = Math.trunc(show["score"] * 10);
+              const rating = show["show"]["rating"]["average"];
               const genres = show["show"]["genres"];
               const date = show["show"]["premiered"].split("-")[0];
               return (
                 <Show
                   imageUrl={imageUrl}
                   name={name}
-                  score={score}
+                  rating={rating}
                   genres={genres}
                   date={date}
                 ></Show>

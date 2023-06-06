@@ -8,11 +8,17 @@ const Show = (props) => {
         <div className="date">{props.date}</div>
         <div className="show-name">
           {props.name}&nbsp;&nbsp;
-          <span className="show-score">{props.score}/10</span>
+          {props.rating != null && (
+            <span className="show-score">{props.rating}/10</span>
+          )}
         </div>
         <div className="genres">
           {props.genres.map((genre) => {
-            return <p className="genre">{genre}</p>;
+            return (
+              <p key={crypto.randomUUID()} className="genre">
+                {genre}
+              </p>
+            );
           })}
         </div>
       </div>
