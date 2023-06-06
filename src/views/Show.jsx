@@ -1,11 +1,19 @@
-import React from "react";
+import { useState } from "react";
 
 import { useLocation } from "react-router-dom";
 
 import Genres from "../components/Genres";
 import Summary from "../components/Summary";
+import Form from "../components/Form";
 
 const Show = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleShowForm = () => {
+    if (showForm) setShowForm(false);
+    else setShowForm(true);
+  };
+
   const location = useLocation();
   const showData = location.state.props;
   const imageUrl = showData["show"]["image"]["original"];
@@ -32,13 +40,18 @@ const Show = () => {
       ? showData["show"]["webChannel"]["officialSite"]
       : "";
   const rating = showData["show"]["rating"]["average"];
+  var time, days;
+  if (showData["show"]["network"] != null) {
+    time = showData["show"]["schedule"]["time"];
+    days = showData["show"]["schedule"]["days"];
+  }
 
   return (
     <div className="bg">
       <div className="division">
         <img className="show-poster" src={imageUrl} />
         <div className="information">
-          <div className="date">
+          <div className="show-date">
             {endYear === 0 ? year + "-Present" : year + "-" + endYear}
           </div>
           <div className="name">{name}</div>
@@ -50,13 +63,26 @@ const Show = () => {
           <Genres genres={genres}></Genres>
           <Summary summary={summary}></Summary>
           {website == "" ? (
-            <button disabled className="watch-btn">
-              Watch it on {channel}
+            <button
+              onClick={() => {
+                handleShowForm();
+              }}
+              className="btn"
+            >
+              Book Tickets
             </button>
           ) : (
             <a href={website} target="_blank">
-              <button className="watch-btn">Watch it on {channel}</button>
+              <button className="btn">Watch it on {channel}</button>
             </a>
+          )}
+          {showForm && (
+            <Form
+              movieName={name}
+              language={language}
+              time={time}
+              days={days}
+            ></Form>
           )}
         </div>
       </div>

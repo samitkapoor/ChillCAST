@@ -1,0 +1,58 @@
+.buy-form {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.buy-form label {
+  margin-top: 10px;
+  margin-left: 3px;
+
+  font-size: 14px;
+}
+
+.buy-form input {
+  width: 300px;
+  border-radius: 10px;
+
+  margin-top: 2px;
+
+  padding: 5px 14px;
+
+  font-size: 14px;
+
+  border: none;
+  outline: none;
+
+  color: black;
+}
+
+.buy-form input:disabled {
+  color: black;
+
+  background-color: rgba(255, 255, 255, 0.726);
+}
+
+.buy-form select {
+  width: 320px;
+
+  margin-top: 2px;
+
+  padding: 5px 10px;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+
+  border: none;
+  outline: none;
+
+  color: black;
+}
+
+.buy-form select option {
+  background-color: white;
+  color: black;
+}
