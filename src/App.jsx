@@ -11,12 +11,18 @@ const App = () => {
   const [query, setQuery] = useState("");
   const [filterShows, setFilterShows] = useState([]);
 
+  // this function will query the shows shown to the user by the name of the show and the year of permiere
   const filterQuery = (q) => {
     if (q == "") {
       setFilterShows(shows);
     } else {
       const temp = shows.filter((show) => {
-        return show["show"]["name"].toLowerCase().includes(q.toLowerCase());
+        const name = show["show"]["name"];
+        const year = show["show"]["premiered"].split("-")[0];
+        return (
+          name.toLowerCase().includes(q.toLowerCase()) ||
+          year.toString().includes(q)
+        );
       });
 
       setFilterShows(temp);
@@ -37,11 +43,13 @@ const App = () => {
           onChange={setQuery}
           filterQuery={filterQuery}
         ></SearchBar>
-        <h1 className={filterShows.length == 0 ? "big-text" : "subtitle"}>
-          {filterShows.length == 0
-            ? "Oops! We couldn't find the show"
-            : "or let us help you pick one!"}
-        </h1>
+        {shows.length != 0 && (
+          <h1 className={filterShows.length == 0 ? "big-text" : "subtitle"}>
+            {filterShows.length == 0
+              ? "Oops! We couldn't find the show"
+              : "or let us help you pick one!"}
+          </h1>
+        )}
         <div className="collection">
           {filterShows.length != 0 &&
             filterShows.map((show) => {
