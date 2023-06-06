@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+// form to book tickets
 const Form = ({ movieName, language, time, days }) => {
   const [quantity, setQuantity] = useState(1);
   const [day, setDay] = useState("");

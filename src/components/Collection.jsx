@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import Show from "../components/Show";
 
+// collection of the all the tv shows
 const Collection = ({ filterShows }) => {
   const navigate = useNavigate();
   return (

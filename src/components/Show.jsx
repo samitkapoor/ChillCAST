@@ -2,6 +2,7 @@ import React from "react";
 
 import Genres from "./Genres";
 
+// UI for each tv show
 const Show = (props) => {
   return (
     <div
