@@ -11,7 +11,7 @@ const Home = () => {
   const [query, setQuery] = useState("");
   const [filterShows, setFilterShows] = useState([]);
 
-  // this function will query the shows shown to the user by the name of the show and the year of permiere
+  // this function will query the shows shown to the user by the name of the show and the year of premiere
   const filterQuery = (q) => {
     if (q == "") {
       setFilterShows(shows);
@@ -29,7 +29,7 @@ const Home = () => {
     }
   };
 
-  // api used to fetch the shows details
+  // used to fetch the shows details on reload
   useEffect(() => {
     fetchShows(setShows, setFilterShows);
   }, []);
