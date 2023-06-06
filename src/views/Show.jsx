@@ -35,7 +35,7 @@ const Show = () => {
 
   return (
     <div className="bg">
-      <div className="filter division">
+      <div className="division">
         <img className="show-poster" src={imageUrl} />
         <div className="information">
           <div className="date">
