@@ -1,0 +1,100 @@
+.collection {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  row-gap: 25px;
+  column-gap: 25px;
+  justify-content: center;
+
+  margin-bottom: 50px;
+
+  position: relative;
+}
+
+.show {
+  cursor: pointer;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  display: grid;
+
+  transition: 100ms;
+}
+
+.show:hover {
+  transform: scale(1.1);
+}
+
+.show * {
+  grid-area: 1/1;
+
+  transition: 200ms;
+}
+
+.show:hover * {
+  opacity: 1;
+}
+
+.poster {
+  display: block;
+}
+
+.poster-overlay {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+  row-gap: 4px;
+
+  background: linear-gradient(to bottom, transparent, black);
+
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.show-name {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+
+  display: flex;
+}
+
+.show-score {
+  font-size: 12px;
+  background-color: red;
+  color: white;
+
+  padding: 0px 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 5px;
+}
+
+.genres {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.genre {
+  font-size: 12px;
+
+  background-color: rgb(85, 82, 82);
+
+  border-radius: 5px;
+
+  padding: 1px 3px;
+}
+
+.date {
+  font-size: 12px;
+  line-height: 1px;
+}

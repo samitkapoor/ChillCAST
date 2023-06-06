@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import Heading from "./components/Heading";
 import SearchBar from "./components/SearchBar";
+import Show from "./components/Show";
 
 import fetchShows from "./utils/shows.js";
 
@@ -19,15 +20,23 @@ const App = () => {
       <div className="filter">
         <Heading></Heading>
         <SearchBar value={query} onChange={setQuery}></SearchBar>
-        <h1 className="big-text">Our collection</h1>
+        <h1 className="subtitle">or let us help you pick one!</h1>
         <div className="collection">
           {shows.length != 0 &&
             shows.map((show) => {
               const imageUrl = show["show"]["image"]["medium"];
+              const name = show["show"]["name"];
+              const score = Math.trunc(show["score"] * 10);
+              const genres = show["show"]["genres"];
+              const date = show["show"]["premiered"].split("-")[0];
               return (
-                <div className="" key={crypto.randomUUID()}>
-                  <img src={imageUrl} alt="" />
-                </div>
+                <Show
+                  imageUrl={imageUrl}
+                  name={name}
+                  score={score}
+                  genres={genres}
+                  date={date}
+                ></Show>
               );
             })}
         </div>
